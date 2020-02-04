@@ -1,16 +1,17 @@
 export default function particulas(targetElement, config) {
 
-    console.log('entrando a particulas')
+    console.log('Entering particulas')
 
     let configuration = {
         color: config.color || '#000000'
     }
 
-    const element = document.querySelector(targetElement)
+    const canvas = document.getElementById(targetElement)
+    const context = canvas.getContext('2d')
 
-    let counter = 0;
     
     const init = () => {
+        console.log(context)
         render()
     }
 
@@ -19,9 +20,7 @@ export default function particulas(targetElement, config) {
     }
 
     const render = () => {
-        element.innerHTML = counter
-        element.style.color = configuration.color
-        counter++
+        canvas.style.border = '2px solid red'
     }
 
     return {
