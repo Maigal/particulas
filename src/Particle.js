@@ -6,8 +6,17 @@ export class Particle {
         this.size = size;
         this.color = color;
         this.duration = duration;
-
-        this.opacityStep = 0.02; 
+        this.opacityStep = ((1000/60) / duration); 
+    }
+    
+    render(ctx) {
+        ctx.beginPath();
+        ctx.globalAlpha = this.alpha;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.closePath();
     }
 }
 

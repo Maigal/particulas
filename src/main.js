@@ -16,39 +16,35 @@ export default function particulas(targetElement, config = {}) {
 
     let particles = [
         new Particle(300, 300, 20, configuration.color, configuration.alpha, configuration.duration),
-        new Particle(100, 100, 15, configuration.color, configuration.alpha, configuration.duration)
+        new Particle(100, 100, 15, configuration.color, configuration.alpha, 1000),
+        new Particle(200, 200, 15, configuration.color, configuration.alpha, 5000)
     ]
 
     
-
+    let tm;
     
     const init = () => {
-        render()
+        tm = new Date();
+        draw()
     }
 
     const set = (property, value) => {
         configuration[property] = value;
     }
 
-    const render = () => {
+    
+
+    const draw = () => {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        console.log('entering render')
         particles.forEach((particle, index) => {
 
+            particle.render(context)
             const _alpha = Math.max(0, particle.alpha - particle.opacityStep);
-
-            context.beginPath();
-            context.globalAlpha = _alpha;
-            context.arc(particle.x, particle.y, particle.size, 0, 2 * Math.PI);
-            context.fillStyle = configuration.color;
-            context.fill();
-            context.globalAlpha = 1;
-            context.closePath();
-
             particle.alpha = _alpha;
             
+            
         })
-        setTimeout(render, 100)
+        setTimeout(draw, 1000/60)
     }
 
     return {
