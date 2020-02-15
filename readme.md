@@ -1,6 +1,6 @@
-Experimental JS particle system
+** Experimental JS particle system
 
-Usage:
+Basic Usage:
 
 const p = particulas('#prueba', {color: 'red'})
 p.init()
