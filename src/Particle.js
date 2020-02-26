@@ -1,12 +1,12 @@
 export class Particle {
-    constructor(x, y, size, color, alpha, duration) {
+    constructor(x, y, size, color, alpha, duration, fps) {
         this.x = x;
         this.y = y;
         this.alpha = alpha;
         this.size = size;
         this.color = color;
         this.duration = duration;
-        this.opacityStep = ((1000/60) / duration); 
+        this.opacityStep = ((1000/fps) / duration); 
     }
     
     render(ctx) {
